@@ -57,7 +57,6 @@ bot.on('message', async message => {
     let userid = message.author.id ;
     let guildid = message.guild.id ;
 
-    console.log(guildid);
 
     if(!profile[guildid])
     {
@@ -73,28 +72,11 @@ bot.on('message', async message => {
       }
     }
 
-    console.log(message.guild.id);
 
      fs.writeFile('./profile.json', JSON.stringify(profile, null, '\t'), (err)=> //Writting JSON file
     {
        if(err) console.log(err);
     });
-    /*
-    if(!profile[userid])
-    {
-      profile[userid] ={       
-        nick: user,              //Start profile information
-        hrivnas: 10,
-        warns: 0,
-        xp: 0,
-        xpToUp: 150,
-        lvl: 0,                   //End profile information
-        roles: message.guild.members.get(message.author.id)._roles, //Author Roles
-        fractionID: "" 
-      };
-    };
-    */
-
 
 
     if(!message.content.startsWith(prefix)) return;
