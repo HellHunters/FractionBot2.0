@@ -33,7 +33,7 @@ if(args[0]==null){
             value: message.author.username
           },
           {
-            name: "Снял предупреждение ",
+            name: "Снял предупреждение с",
             value: user.name
           },
           {
