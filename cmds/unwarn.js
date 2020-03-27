@@ -25,7 +25,7 @@ if(args[0]==null){
     profile[message.guild.id].members[userId].warns = userWarns;
      //Do smth with warns(check them on number)
     message.channel.send({embed: {
-        color: '#008000',
+        color: '#008800',
        
         title: "Предупреждение",
         fields: [{
