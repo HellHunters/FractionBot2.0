@@ -64,7 +64,7 @@ if(args[0]==null){
           }
         });
 
-        message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0])).ban({days: 7,reason: 'You deserve this'});
+        message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0])).kick({reason: 'You deserve this'});
         return;
     }
     
