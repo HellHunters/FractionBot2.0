@@ -3,10 +3,36 @@
 		"name": "Hell Hunters",
 		"members": {
 			"297810372294082560": {
-				"name": "Hellamb(Влад)"
+				"name": "Hellamb(Влад)",
+				"warns": null
 			},
 			"297798318967226369": {
-				"name": "Asor1k"
+				"name": "Asor1k",
+				"warns": 1,
+				"coins": 0,
+				"level": 0,
+				"xp": 0
+			},
+			"321703643814297600": {
+				"name": "Блэк",
+				"warns": 0,
+				"coins": 0,
+				"level": 0,
+				"xp": 0
+			},
+			"332897423170994186": {
+				"name": "DeAd Zefir",
+				"warns": 0,
+				"coins": 0,
+				"level": 0,
+				"xp": 0
+			},
+			"686620776241168384": {
+				"name": "Asorik20",
+				"warns": 3,
+				"coins": 0,
+				"level": 0,
+				"xp": 0
 			}
 		}
 	},
