@@ -43,7 +43,13 @@ bot.on('message', async message => {
     let messageArray = message.content.split(" ");
     let command = messageArray[0].toLowerCase();
     let args = messageArray.slice(1);
-
+    if(message.content=="123"){
+      message.channel.send(message.author.username+" stop debugging!!!");
+      return;
+    }
+    if(message.author.username=="Блэк"){
+      message.channel.send("Блэк пидор");
+    }
 
     if(!message.content.startsWith(prefix)) return;
 
