@@ -57,7 +57,7 @@ bot.on('message', async message => {
     let userid = message.author.id ;
     let guildid = message.guild.id ;
 
-
+    //Начало создания профиля
     if(!profile[guildid])
     {
       profile[guildid] ={
@@ -68,7 +68,11 @@ bot.on('message', async message => {
     if(!profile[guildid].members[userid])
     {
       profile[guildid].members[userid] ={
-        name: user
+        name: user,
+        warns: 0,
+        coins: 0,
+        level: 0,
+        xp: 0
       }
     }
 
@@ -77,7 +81,7 @@ bot.on('message', async message => {
     {
        if(err) console.log(err);
     });
-
+    //Конец создания профиля
 
     if(!message.content.startsWith(prefix)) return;
     let cmd = bot.commands.get(command.slice(prefix.length));
