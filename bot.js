@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+
 const bot = new Discord.Client();
 bot.commands = new Discord.Collection();
 const fs = require('fs');
@@ -34,6 +35,8 @@ bot.on('ready', () => {
     })
     });
 
+
+
 bot.on('message', async message => {
 
     if(message.author.bot) return ;          //Если бот автор, то не читает
@@ -53,23 +56,10 @@ bot.on('message', async message => {
     let guildid = message.guild.id ;
 
     //Начало создания профиля
-    if(!profile[guildid])
-    {
-      profile[guildid] ={
-        name: message.guild.name,
-        members : {}
-      }
-    }
-    if(!profile[guildid].members[userid])
-    {
-      profile[guildid].members[userid] ={
-        name: user,
-        warns: 0,
-        coins: 0,
-        level: 0,
-        xp: 0
-      }
-    }
+    
+ 
+    AddProfiles(message.guild);
+    
 
 
      fs.writeFile('./profile.json', JSON.stringify(profile, null, '\t'), (err)=> //Writting JSON file
