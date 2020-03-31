@@ -1,58 +1,8 @@
 {
-	"692761786918764625": {
-		"GameId": "692761786918764625",
-		"Words": "",
-		"LastWord": "А",
-		"CurWord": "2",
-		"LastWordPlayerId": 0,
-		"PlayerCount": 0,
-		"Play": true,
-		"Players": {
-			"332897423170994186": {
-				"name": "DeAd Zefir",
-				"points": 0,
-				"lastWord": ""
-			},
-			"297810372294082560": {
-				"name": "Hellamb(Влад)",
-				"points": 0,
-				"lastWord": ""
-			},
-			"297798318967226369": {
-				"name": "Asor1k",
-				"points": 0,
-				"lastWord": ""
-			},
-			"213466096718708737": {
-				"name": "Mantaro",
-				"points": 0,
-				"lastWord": ""
-			},
-			"155149108183695360": {
-				"name": "Dyno",
-				"points": 0,
-				"lastWord": ""
-			},
-			"368678533897125888": {
-				"name": "Rexana",
-				"points": 0,
-				"lastWord": ""
-			},
-			"234395307759108106": {
-				"name": "Groovy",
-				"points": 0,
-				"lastWord": ""
-			},
-			"614427014052577281": {
-				"name": "Fraction Bot v2.0",
-				"points": 0,
-				"lastWord": ""
-			},
-			"321703643814297600": {
-				"name": "Блэк",
-				"points": 0,
-				"lastWord": ""
-			}
-		}
+	"game": {
+		"players": {},
+		"channelID": "",
+		"usedWords": [],
+		"currentLetter": ""
 	}
 }

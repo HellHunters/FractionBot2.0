@@ -58,21 +58,7 @@ bot.on('message', async message => {
     let cmd = bot.commands.get(command.slice(prefix.length));
     if(cmd) cmd.run(bot, message, args)
 
-     if(!message.content.startsWith(prefix))
-    {
-      console.log("Заходит");
-      if(wordGameHandler[channelid]){
-        wordGameHandler[channelid].CurWord = messageArray[0];
-        if(message.content.toLowerCase()=="#stop"){
-          wordGameHandler[channelid].Play = false;
-        }
-      }
-      fs.writeFile('./wordGameHandler.json', JSON.stringify(wordGameHandler, null, '\t'), (err)=> //Writting JSON file
-    {
-       if(err) console.log(err);
-    });
-    return;
-    }
+     if(!message.content.startsWith(prefix)) return;
 
     
     //Конец создания профиля
