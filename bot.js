@@ -4,6 +4,7 @@ bot.commands = new Discord.Collection();
 const fs = require('fs');
 let config = require('./config.json');
 let profile = require('./profile.json');
+let wordGameHandler = require('./wordGameHandler.json');
 
 let token = config.token;
 let prefix = config.prefix;
@@ -49,45 +50,36 @@ bot.on('message', async message => {
 
 
     let user = message.author.username ;
+    let channelid = message.channel.id;
     let userid = message.author.id ;
     let guildid = message.guild.id ;
 
-    //Начало создания профиля
-    if(!profile[guildid])
-    {
-      profile[guildid] ={
-        name: message.guild.name,
-        members : {}
-      }
-    }
-    if(!profile[guildid].members[userid])
-    {
-      profile[guildid].members[userid] ={
-        name: user,
-        warns: 0,
-        coins: 0,
-        level: 0,
-        xp: 0
-      }
-    }
+    
+    let cmd = bot.commands.get(command.slice(prefix.length));
+    if(cmd) cmd.run(bot, message, args)
 
-
-     fs.writeFile('./profile.json', JSON.stringify(profile, null, '\t'), (err)=> //Writting JSON file
+     if(!message.content.startsWith(prefix))
+    {
+      console.log("Заходит");
+      if(wordGameHandler[channelid]){
+        wordGameHandler[channelid].CurWord = messageArray[0];
+        if(message.content.toLowerCase()=="#stop"){
+          wordGameHandler[channelid].Play = false;
+        }
+      }
+      fs.writeFile('./wordGameHandler.json', JSON.stringify(wordGameHandler, null, '\t'), (err)=> //Writting JSON file
     {
        if(err) console.log(err);
     });
-    //Конец создания профиля
-
-    if(!message.content.startsWith(prefix))
-    {
-      
-
-      return;
+    return;
     }
 
+    
+    //Конец создания профиля
 
-    let cmd = bot.commands.get(command.slice(prefix.length));
-    if(cmd) cmd.run(bot, message, args)
+   
+
+
 
   }
 );
