@@ -4,7 +4,6 @@ bot.commands = new Discord.Collection();
 const fs = require('fs');
 let config = require('./config.json');
 let profile = require('./profile.json');
-let wordGameHandler = require('./wordGameHandler.json');
 
 let token = config.token;
 let prefix = config.prefix;
@@ -62,11 +61,6 @@ bot.on('message', async message => {
 
     
     //Конец создания профиля
-
-   
-
-
-
   }
 );
 

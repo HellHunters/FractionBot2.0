@@ -1,7 +1,7 @@
 const Discord = module.require("discord.js");
 const fs = require("fs");
 //let wordGameHandler = require('../wordGameHandler.json');
-let wordGameHandler = require('../wordGameHandler')
+let wordGameHandler = require('../wordGameHandler.json');
 
 function sleep(millis)
 {
@@ -11,8 +11,11 @@ function sleep(millis)
     while(curDate-date < millis);
 }
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
 
-let isPlay = false;
+let isPlay = true;
 
 module.exports.run = async (bot , message , args) => 
 { 
@@ -24,9 +27,9 @@ module.exports.run = async (bot , message , args) =>
     players : {},
     channelID:"",
     usedWords: [],
-    currentLetter:"",
+    currentLetter:"А",
   }
-
+  
   fs.writeFile('./wordGameHandler.json', JSON.stringify(wordGameHandler, null, '\t'), (err)=> //Writting JSON file
     {
        if(err) console.log(err);
@@ -34,19 +37,23 @@ module.exports.run = async (bot , message , args) =>
 
     let handler = wordGameHandler["game"]
 
-    let msg = await message.channel.send("Чтобы присоедениться поставьте реакцию! У вас есть 30сек");
+    let msg = await message.channel.send("Чтобы присоедениться поставьте реакцию! У вас есть 10сек");
     await msg.react('✅');
+
+    let playersIds = [];
+    
     const reactions = await msg.awaitReactions(reaction => {
       //console.log(reaction.users.cache)
       for(key of reaction.users.cache){
         console.log(msg.guild.members)
-        if(msg.guild.member.get(key[0]).bot){
+        if(msg.guild.member(key[0]).bot){
           console.log("1")
  
         }else
         {
-           console.log("2")
-          handler.players[reaction.message.author.id] = {
+            console.log("2");
+            playersIds.push(reaction.message.author.id);
+            handler.players[reaction.message.author.id] = {
             name: reaction.message.author.username,
             hp : 3,
             score: 0
@@ -57,12 +64,11 @@ module.exports.run = async (bot , message , args) =>
              if(err) console.log(err);
            });
         } 
-
       }
      
 
       
-    },{time:30000})
+    },{time:10000})
 
     console.log(msg)
 
@@ -71,15 +77,26 @@ module.exports.run = async (bot , message , args) =>
     while(isPlay)
     {
 
-
+      
       const filter = m => m.author.id === message.author.id;
-      message.reply("waiting 10s").then(r => r.delete(10000));
+      //message.reply("waiting 10s").then(r => r.delete(10000));
       await message.channel.awaitMessages(filter,{max: 1, time: 10000}).then(collected =>  
       {
-
+        if(typeof(collected.first().content) == 'undefined')return;
+        console.log("SS");
+        
         var word = collected.first().content;
+        let wordArr = word.split('');
+        let firstLetter = wordArr[0];
 
-        message.channel.send(word);
+        if(firstLetter==wordGameHandler["game"].currentLetter)
+        {
+          let nextId = playersIds[getRandomInt(playersIds.length)+1];
+          message.channel.send("Следующий: "+ wordGameHandler["game"].players[nextId].name);
+
+        }
+
+       // message.channel.send(word);
 
 
       }).catch(err =>{

@@ -1,8 +1,14 @@
 {
 	"game": {
-		"players": {},
+		"players": {
+			"614427014052577281": {
+				"name": "Fraction Bot v2.0",
+				"hp": 3,
+				"score": 0
+			}
+		},
 		"channelID": "",
 		"usedWords": [],
-		"currentLetter": ""
+		"currentLetter": "А"
 	}
 }
